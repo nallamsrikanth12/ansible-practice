@@ -9,6 +9,13 @@
       state: started
       enabled: yes
 
+- name: install the python dependencies
+  ansible.builtin.pip:
+    name:
+      - pymsql
+      - cryptography
+      executable: pip3.9 
+
 - name: check password is set or not
   community.mysql.mysql_info:
     login_user: "{{login_user}}"
@@ -21,3 +28,9 @@
 - name: print the  mysql_info information
   ansible.builtin.debug:
     msg: "output of {{mysql_info}}"
+
+- name: set the password
+  ansible.builtin.command: "mysql_secure_installation --set-root-pass {{login_password}}"
+  when: "output of {{mysql_info}}.failed  is true"
+
+
