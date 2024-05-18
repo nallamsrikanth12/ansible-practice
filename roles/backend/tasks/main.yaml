@@ -41,7 +41,7 @@
     state: started
     enabled: yes
 
-- name: install the nodejs
+- name: install the mysql
   ansible.builtin.dnf:
     name: mysql
     state: latest
