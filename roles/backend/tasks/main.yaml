@@ -33,5 +33,31 @@
   ansible.builtin.template:
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
-  notify: deamon reload
+  notify:
+  - daemon reload
+
+- name: install python mysql dependencies
+  ansible.builtin.pip: 
+    name:
+    - PyMySQL # to connect MySQL DB from Ansible
+    - cryptography
+    executable: pip3.9 # pip3.11 if python version is 3.11
+
+
+- name: load scheme
+  community.mysql.mysql_db:
+    login_user: "{{login_user}}"
+    login_password: "{{sql_root_password}}"
+    login_host: "{{login_host}}"
+    name: all
+    state: import
+    target: /app/schema/backend.sql
+
+
+ - name: start and enable the service
+   ansible.builtin.service:
+    name: backend
+    state: restarted
+    enabled: yes
+
 
