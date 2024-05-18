@@ -3,8 +3,9 @@
   vars_files:
   - /home/ec2-user/ansible-practice/roles/db/vars/main.yaml
   vars_prompt:
-    - name: password
-      prompt: enter the password
+    - name: sql_root_password
+      prompt: "enter the password"
+      private: no
   become: yes
   roles:
   - db
