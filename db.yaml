@@ -1,7 +1,7 @@
 - name: configure the db server
   hosts: db
   vars_files:
-  - main.yaml
+  - /home/ec2-user/ansible-practice/roles/db/vars/main.yaml
   become: yes
   roles:
   - db
