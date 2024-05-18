@@ -12,7 +12,7 @@
 - name: install the python dependencies
   ansible.builtin.pip:
     name:
-    - pymsql
+    - pymysql
     - cryptography
     executable: pip3.9 
 
