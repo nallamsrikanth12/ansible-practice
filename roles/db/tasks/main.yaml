@@ -12,9 +12,9 @@
 - name: install the python dependencies
   ansible.builtin.pip:
     name:
-      - pymsql
-      - cryptography
-      executable: pip3.9 
+    - pymsql
+    - cryptography
+    executable: pip3.9 
 
 - name: check password is set or not
   community.mysql.mysql_info:
