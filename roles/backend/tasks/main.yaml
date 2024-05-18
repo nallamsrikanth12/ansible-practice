@@ -54,10 +54,10 @@
     target: /app/schema/backend.sql
 
 
- - name: start and enable the service
-   ansible.builtin.service:
-    name: backend
-    state: restarted
-    enabled: yes
+- name: start and enable the service
+  ansible.builtin.service:
+  name: backend
+  state: restarted
+  enabled: yes
 
 
