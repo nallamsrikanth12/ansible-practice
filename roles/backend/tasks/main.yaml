@@ -7,8 +7,11 @@
 
 - name: install the nodejs
   ansible.builtin.dnf:
-    name: nodejs
+    name: "{{item}}"
     state: latest
+  loop:
+  - nodejs
+  - mysql
 
 
 - name: add the user
@@ -30,3 +33,5 @@
   ansible.builtin.template:
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
+  notify: deamon reload
+
