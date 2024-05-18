@@ -7,12 +7,9 @@
 
 - name: install the nodejs
   ansible.builtin.dnf:
-    name: "{{item}}"
+    name: nodejs
     state: latest
-  loop:
-  - nodejs
-  - mysql
-
+  
 
 - name: add the user
   ansible.builtin.user:
@@ -38,6 +35,18 @@
   ansible.builtin.systemd_service:
     daemon_reload: true
 
+- name: start the enabled the service
+  ansible.builtin.service:
+    name: backend
+    state: started
+    enabled: yes
+
+- name: install the nodejs
+  ansible.builtin.dnf:
+    name: mysql
+    state: latest
+
+
 
 - name: install python mysql dependencies
   ansible.builtin.pip: 
@@ -57,12 +66,10 @@
     target: /app/schema/backend.sql
 
 
-
-
 - name: start and enable the service
   ansible.builtin.service:
     name: backend
     state: restarted
-    enabled: yes
+
 
 
