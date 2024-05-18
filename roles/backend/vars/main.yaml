@@ -1,1 +1,5 @@
 DB_HOST: db.srikantheswar.online
+
+login_user: root
+login_host: db.srikantheswar.online
+sql_root_password: ExpenseApp@1
