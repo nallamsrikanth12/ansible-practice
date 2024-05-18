@@ -1,0 +1,23 @@
+- name: install mysql-server
+  ansible.builtin.dnf:
+    - name: mysql-server
+      state: latest
+
+- name: enable and start service
+  ansible.builtin.service:
+    - name: mysqld
+      state: started
+      enabled: yes
+
+- name: check password is set or not
+  community.mysql.mysql_info:
+    login_user: "{{login_user}}"
+    login_password: "{{login_password}}"
+    filter: version
+  register: mysql_info
+  ignore_errors: True
+
+
+- name: print the  mysql_info information
+  ansible.builtin.debug:
+    msg: "output of {{mysql_info}}"

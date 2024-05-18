@@ -1,0 +1,7 @@
+- name: configure the db server
+  hosts: db
+  vars:
+  - main.yaml
+  become: yes
+  roles:
+  - db
