@@ -1,4 +1,8 @@
 - name: configure the frontend server
   hosts: frontend
   become: yes
+  vars_files:
+  -  /home/ec2-user/ansible-practice/roles/frontend/vars/main.yaml
+  roles:
+  - frontend
   
