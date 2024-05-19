@@ -2,7 +2,7 @@
   hosts: backend
   become: yes
   vars_files:
-  - /home/ec2-user/ansible-practice/roles/db/vars/main.yaml
+  - /home/ec2-user/ansible-practice/roles/backend/vars/main.yaml
   roles:
   - backend
 
