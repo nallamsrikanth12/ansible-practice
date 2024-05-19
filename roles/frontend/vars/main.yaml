@@ -1,0 +1,6 @@
+app_location: /usr/share/nginx/html/
+component: frontend
+
+backend_url: backend.srikantheswar.online
+
+
